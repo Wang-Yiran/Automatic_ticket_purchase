@@ -12,13 +12,13 @@ damai_url="https://www.damai.cn/"
 #登录页
 login_url="https://passport.damai.cn/login?ru=https%3A%2F%2Fwww.damai.cn%2F"
 #抢票目标页
-target_url="https://detail.damai.cn/item.htm?spm=a2oeg.search_category.0.0.592428dfAVADSo&id=598610277762&clicktitle=%E5%91%A8%E6%9D%B0%E4%BC%A62019%E5%85%A8%E6%96%B0%E4%B8%96%E7%95%8C%E5%B7%A1%E5%9B%9E%E6%BC%94%E5%94%B1%E4%BC%9A%E2%80%94%E5%8D%97%E4%BA%AC%E7%AB%99"
+target_url="https://detail.damai.cn/item.htm?spm=a2oeg.search_category.0.0.9bee38841zhdic&id=596910046139&clicktitle=%E6%9D%8E%E5%AE%97%E7%9B%9B%202019%E3%80%8E%E6%9C%89%E6%AD%8C%E4%B9%8B%E5%B9%B4%E3%80%8F%E6%BC%94%E5%94%B1%E4%BC%9A%E5%AE%9C%E6%98%8C%E7%AB%99"
 
 # target_url="https://detail.damai.cn/item.htm?spm=a2oeg.search_category.0.0.17d24d15CjZAB1&id=597705805772&clicktitle=2019%E7%88%B1%E5%A5%87%E8%89%BA%E5%B0%96%E5%8F%AB%E4%B9%8B%E5%A4%9C%E6%BC%94%E5%94%B1%E4%BC%9A%E5%8C%97%E4%BA%AC%E7%AB%99"
 
 
-name = "Your_Name"
-phone = "Your_PhoneNumber"
+name = ""
+phone = ""
 
 class Concert(object):
     def __init__(self):
@@ -164,7 +164,7 @@ class Concert(object):
                 #选第二个购票人信息(若购买多张票时需要开启此选项，增加购票人信息)
                 time.sleep(0.5)
                 self.driver.find_elements_by_xpath('//div[@class = "w1200"]//div[@class = "ticket-buyer-select"]//div//div[2]//span')[0].click()  #观影人2
-           
+
             except Exception as e:
                 print("###购票人信息选中失败，自行查看元素位置###")
                 print(e)
@@ -176,6 +176,8 @@ class Concert(object):
 
             time.sleep(1)       # 太快会影响加载，导致按钮点击无效
             # self.driver.find_elements_by_xpath('//div[@class = "w1200"]//div[2]//div//div[9]//button[1]')[0].click()
+            # //提交按钮的位置需要选择
+            self.driver.find_elements_by_css_selector("#confirmOrder_1 > div.submit-wrapper > button")[0].click()
 
             # try:
             #     element = WebDriverWait(self.driver, 5).until(EC.title_contains('支付宝 - 网上支付 安全快速！'))
